@@ -13,7 +13,7 @@ def listar_produtos(request):
         return Response(serializer.data)
     elif request.method == 'POST': 
         serializer = ProdutoSerializer(data = request.data)
-        serializer.is_valid()
+    if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     else:
